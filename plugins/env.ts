@@ -1,9 +1,6 @@
 import { Elysia, t } from 'elysia'
 import { env } from '@yolk-oss/elysia-env'
-
-const app = new Elysia()
-// console.log(app)
-app.use(
+export default new Elysia().use(
     env({
         MODE: t.String({
             default: 'development',
@@ -15,4 +12,3 @@ app.use(
         }),
     }),
 )
-export default app
