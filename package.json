@@ -6,6 +6,7 @@
     "dev": "bun run --watch index.ts"
   },
   "dependencies": {
+    "@elysiajs/bearer": "^1.0.2",
     "@elysiajs/cors": "^1.0.2",
     "@elysiajs/server-timing": "^1.0.2",
     "@google-cloud/secret-manager": "^5.5.0",

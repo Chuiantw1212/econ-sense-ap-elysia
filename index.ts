@@ -12,6 +12,7 @@ import userModel from './models/user'
 import rootController from './controllers/root'
 import userController from './controllers/user'
 (async () => {
+  console.time('test')
   await firebase.initialize()
   await userModel.initialize({
     firebase,
@@ -19,7 +20,7 @@ import userController from './controllers/user'
   /**
    * Seperate files
    * https://elysiajs.com/essential/plugin.html#separate-file
-   */
+  */
   const elysia = new Elysia()
     .use(envPlugin)
     // plugin
@@ -35,4 +36,5 @@ import userController from './controllers/user'
   console.log(
     `🦊 Elysia is running at ${elysia.server?.hostname}:${elysia.server?.port}`
   );
+  console.timeEnd('test')
 })()
