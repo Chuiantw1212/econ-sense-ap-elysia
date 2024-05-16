@@ -10,15 +10,24 @@ import type {
     IUserMortgage,
     IUser,
 } from '../types/user'
+import firebase from '../plugins/firebase'
+import { CollectionReference, Query, DocumentSnapshot, DocumentData, getFirestore } from 'firebase-admin/firestore'
 
-export default class UserModel {
-    collection: any
-    constructor(app: any = {}) {
-        // const { firestore } = app.firebase
-        // this.collection = firestore.collection('users')
+interface IUserModelOptions {
+    firebase: typeof firebase
+}
+
+export class UserModel {
+    collection: CollectionReference
+    constructor(payload: any = {}) {
+        const { firebase } = payload
+        const firestore = firebase?.getFirestore()
+        this.collection = firestore?.collection('users')
     }
-    test() {
-        console.log('test')
+    initialize(payload: IUserModelOptions) {
+        const { firebase } = payload
+        const firestore = firebase?.getFirestore()
+        this.collection = firestore?.collection('users')
     }
     async mergeProfile(uid: string, data: any = {}) {
         const singleDocSnapshot = await this.checkSingleDoc(uid)
@@ -320,8 +329,5 @@ export default class UserModel {
         return userForm
     }
 }
-// export default new Elysia().decorate()
-
-// export default fp(async function (app: any) {
-//     app.decorate('UserModel', new UserModel(app))
-// })
+const userModel = new UserModel()
+export default userModel

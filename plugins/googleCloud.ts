@@ -1,6 +1,7 @@
 import { SecretManagerServiceClient } from '@google-cloud/secret-manager'
-class GoogleCloudPlugin {
+export class GoogleCloudPlugin {
     sercertManagerServiceClient: SecretManagerServiceClient
+    isReady: boolean = false
     constructor() {
         // Instantiates a client
         const client = new SecretManagerServiceClient()
@@ -51,4 +52,5 @@ class GoogleCloudPlugin {
         }
     }
 }
-export default new GoogleCloudPlugin()
+const googleCloud = new GoogleCloudPlugin()
+export default googleCloud

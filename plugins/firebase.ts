@@ -2,14 +2,17 @@ import admin, { type ServiceAccount } from "firebase-admin"
 import { getAuth, } from 'firebase-admin/auth'
 import { getFirestore, Firestore } from 'firebase-admin/firestore'
 import { getStorage, Storage, } from 'firebase-admin/storage'
-import { GoogleCloudPlugin } from './googleCloud'
+import googleCloud, { GoogleCloudPlugin } from './googleCloud'
 
-export default class FirebasePlugin {
+export class FirebasePlugin {
     firestore: Firestore | any
     bucketPublic: ReturnType<Storage['bucket']> | any
     googleCloud: GoogleCloudPlugin
-    constructor(app) {
-        this.googleCloud = app.googleCloud
+    constructor() {
+        this.googleCloud = googleCloud
+    }
+    getFirestore() {
+        return getFirestore()
     }
     async initialize() {
         try {
@@ -42,12 +45,12 @@ export default class FirebasePlugin {
                     clientEmail: serviceAccountPathOrObject.client_email,
                     privateKey: serviceAccountPathOrObject.private_key
                 }
-                const credential =  admin.credential.cert(serviceAccountfrom)
+                const credential = admin.credential.cert(serviceAccountfrom)
                 admin.initializeApp({
                     credential,
                 })
             }
-            this.firestore = getFirestore();
+            this.firestore = getFirestore()
             /**
              * https://firebase.google.com/docs/storage/admin/start
             */
@@ -82,8 +85,5 @@ export default class FirebasePlugin {
         });
     }
 }
-// export default fp(async function (app: any) {
-//     const firebase = new FirebasePlugin(app)
-//     await firebase.initialize()
-//     app.decorate('firebase', firebase)
-// })
+const firebasePlugin = new FirebasePlugin()
+export default firebasePlugin

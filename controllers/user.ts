@@ -1,9 +1,9 @@
 import { Elysia } from 'elysia'
 import UserModel from '../models/user'
 const users = new Elysia({ prefix: '/user' })
-    .decorate('userModel', new UserModel(new Elysia()))
+    .decorate('UserModel', UserModel)
     .get('/', (req) => {
-        req.userModel.test()
+        // req.UserModel.test()
         return 'test'
     })
     .post('/sign-in', (req: Request) => {
