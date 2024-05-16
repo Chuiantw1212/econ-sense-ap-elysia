@@ -9,7 +9,8 @@
     "@elysiajs/cors": "^1.0.2",
     "@elysiajs/server-timing": "^1.0.2",
     "@yolk-oss/elysia-env": "^1.0.2",
-    "elysia": "latest"
+    "elysia": "latest",
+    "firebase-admin": "^12.1.0"
   },
   "devDependencies": {
     "bun-types": "latest"

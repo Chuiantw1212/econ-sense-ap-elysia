@@ -6,6 +6,8 @@ import { Elysia } from 'elysia'
  */
 export default new Elysia()
     .get('/', (req: Request) => {
+        // Service.do1(name)
+        // Service.do2(name)
         return 'hi'
     })
 

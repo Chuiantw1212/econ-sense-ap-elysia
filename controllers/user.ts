@@ -1,7 +1,19 @@
 import { Elysia } from 'elysia'
+import UserModel from '../models/user'
 const users = new Elysia({ prefix: '/user' })
-    .post('/sign-in', () => 'Sign in')
-    .post('/sign-up', () => 'Sign up')
-    .post('/profile', () => 'Profile')
+    .decorate('userModel', new UserModel(new Elysia()))
+    .get('/', (req) => {
+        req.userModel.test()
+        return 'test'
+    })
+    .post('/sign-in', (req: Request) => {
+        return 'Sign in'
+    })
+    .post('/sign-up', (req: Request) => {
+        return 'Sign up'
+    })
+    .post('/profile', (req: Request) => {
+        return 'Profile'
+    })
 
 export default users
