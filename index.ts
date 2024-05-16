@@ -1,12 +1,14 @@
-import { Elysia } from "elysia";
+import { Elysia } from "elysia"
+// plugins core
 import envPlugin from './plugins/env'
 import corsPlugin from './plugins/cors'
+// plugins
+import { serverTiming } from '@elysiajs/server-timing'
+// models
 import setupModel from './models/setup'
+// controllers
 import rootController from './controllers/root'
-function version(version = 1) {
-  return new Elysia()
-  .get('/version', version)
-}
+import userController from './controllers/user'
 
 /**
  * Seperate files
@@ -16,10 +18,12 @@ const elysia = new Elysia()
   .use(envPlugin)
   // plugin
   .use(corsPlugin)
-  .use(version(1))
+  .use(serverTiming())
+  // models
   .use(setupModel)
   // controllers
   .use(rootController)
+  .use(userController)
   .listen(8080)
 
 console.log(
