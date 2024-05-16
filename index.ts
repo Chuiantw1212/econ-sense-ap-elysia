@@ -3,15 +3,15 @@ import envPlugin from './plugins/env'
 import corsPlugin from './plugins/cors'
 import setupModel from './models/setup'
 import rootController from './controllers/root'
+function version(version = 1) {
+  return new Elysia()
+  .get('/version', version)
+}
+
 /**
  * Seperate files
  * https://elysiajs.com/essential/plugin.html#separate-file
  */
-function version(version = 1) {
-  return new Elysia()
-    .get('/version', version)
-}
-
 const elysia = new Elysia()
   .use(envPlugin)
   // plugin
