@@ -1,5 +1,3 @@
-import { Elysia } from 'elysia'
-import { CollectionReference, Query, DocumentSnapshot, DocumentData } from 'firebase-admin/firestore'
 import type {
     IUserProfile,
     IUserCareer,
