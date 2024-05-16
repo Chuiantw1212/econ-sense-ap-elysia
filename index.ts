@@ -1,8 +1,15 @@
 import { Elysia } from "elysia";
-import rootController from './controllers/root'
 
 const elysia: Elysia = new Elysia()
-// const app = elysia.get("/", () => "Hello Elysia").listen(8000);
+// plugin core
+import envPlugin from './plugins/env'
+elysia.use(envPlugin)
+// plugin
+import corsPlugin from './plugins/cors'
+elysia.use(corsPlugin)
+
+// controllers
+import rootController from './controllers/root'
 elysia.use(rootController)
 elysia.listen(8080)
 

@@ -1,8 +1,8 @@
 import { Elysia } from 'elysia'
 
 const elysia = new Elysia()
-elysia.get('/', (req: Request) => {
-    return 'hi'
-})
+// elysia.get('/', () => 'hi', {
+//     hi: 'Elysia'
+// })
 
 export default elysia
