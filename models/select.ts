@@ -1,6 +1,5 @@
 import type { IOptionsItem, ISelectMap, ISelectDocData } from '../types/select'
 import { Query, QuerySnapshot, CollectionReference, DocumentReference, DocumentData } from 'firebase-admin/firestore'
-import firebase from '../plugins/firebase'
 
 export class SelectModel {
     collection: CollectionReference
@@ -17,10 +16,13 @@ export class SelectModel {
         this.collection = firestore.collection('selects')
         this.setOptions()
     }
-    setOptions() {
-        this.optionKeys.forEach(async key => {
-            const options = await this.getOptionsByKey(key)
-            this.options[key] = options
+    async setOptions() {
+        const promises = this.optionKeys.map(key => {
+            return this.getOptionsByKey(key)
+        })
+        const options = await Promise.all(promises)
+        this.optionKeys.forEach((key, index) => {
+            this.options[key] = options[index]
         })
     }
     async getOptionsMap() {
@@ -43,13 +45,17 @@ export class SelectModel {
         return selectMap
     }
     async getOptionsByKey(key: string,): Promise<IOptionsItem[]> {
-        const keyQuery: Query = this.collection.where('key', '==', key).limit(1)
-        const snapshot: QuerySnapshot = await keyQuery.get()
+        console.log({ key })
+        const keyQuery = this.collection.where('key', '==', key).limit(1)
+        // console.log(key, (await this.collection.get()).docs[0].data())
+        const data = (await this.collection.get()).docs[0].data()
+        console.log(data)
+        const snapshot = await this.collection.where('key', '==', key).get()
+        console.log('??')
+        return []
         if (snapshot.docs.length) {
             const options: IOptionsItem[] = snapshot.docs[0].data().options
             return options
-        } else {
-            return []
         }
     }
     async replaceByKey(key: string, options: IOptionsItem[] = []) {

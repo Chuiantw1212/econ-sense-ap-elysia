@@ -7,6 +7,7 @@ import firebase from './plugins/firebase'
 import { serverTiming } from '@elysiajs/server-timing'
 // models
 import selectModel from './models/select'
+import bankModel from './models/bank'
 import setupModel from './models/setup'
 import userModel from './models/user'
 // controllers
@@ -15,10 +16,15 @@ import userController from './controllers/user'
 (async () => {
   console.time('test')
   await firebase.initialize()
-  await selectModel.initialize
-  await userModel.initialize({
+  await selectModel.initialize({
     firebase,
   })
+  // await bankModel.initialize({
+  //   selectModel
+  // })
+  // await userModel.initialize({
+  //   firebase,
+  // })
   /**
    * Seperate files
    * https://elysiajs.com/essential/plugin.html#separate-file
