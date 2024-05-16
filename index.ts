@@ -1,5 +1,9 @@
 import { Elysia } from "elysia";
 
+/**
+ * Seperate files
+ * https://elysiajs.com/essential/plugin.html#separate-file
+ */
 const elysia: Elysia = new Elysia()
 // plugin core
 import envPlugin from './plugins/env'
