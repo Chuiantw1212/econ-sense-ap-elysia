@@ -6,6 +6,7 @@ import firebase from './plugins/firebase'
 // plugins
 import { serverTiming } from '@elysiajs/server-timing'
 // models
+import selectModel from './models/select'
 import setupModel from './models/setup'
 import userModel from './models/user'
 // controllers
@@ -14,6 +15,7 @@ import userController from './controllers/user'
 (async () => {
   console.time('test')
   await firebase.initialize()
+  await selectModel.initialize
   await userModel.initialize({
     firebase,
   })

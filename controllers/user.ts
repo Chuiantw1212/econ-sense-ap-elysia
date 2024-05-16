@@ -1,5 +1,6 @@
 import { Elysia } from 'elysia'
 import UserModel from '../models/user'
+import BankModel from '../models/bank'
 import firebase from '../plugins/firebase'
 import { bearer } from '@elysiajs/bearer'
 const userController = new Elysia({ prefix: '/user' })

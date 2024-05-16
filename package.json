@@ -11,10 +11,13 @@
     "@elysiajs/server-timing": "^1.0.2",
     "@google-cloud/secret-manager": "^5.5.0",
     "@yolk-oss/elysia-env": "^1.0.2",
+    "axios": "^1.6.8",
     "elysia": "latest",
-    "firebase-admin": "^12.1.0"
+    "firebase-admin": "^12.1.0",
+    "jsdom": "^24.0.0"
   },
   "devDependencies": {
+    "@types/jsdom": "^21.1.6",
     "bun-types": "latest"
   },
   "module": "src/index.js"
