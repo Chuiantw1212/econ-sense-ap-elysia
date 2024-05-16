@@ -11,6 +11,9 @@ elysia.use(envPlugin)
 // plugin
 import corsPlugin from './plugins/cors'
 elysia.use(corsPlugin)
+const version = (version = 1) => new Elysia()
+  .get('/version', version)
+elysia.use(version(1))
 
 // controllers
 import rootController from './controllers/root'
