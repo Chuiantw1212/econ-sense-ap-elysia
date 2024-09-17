@@ -3,6 +3,7 @@ const time = new Date().getTime()
 import { Elysia } from "elysia";
 import { node } from '@elysiajs/node'
 import { cors } from '@elysiajs/cors'
+import path from 'path'
 // entities
 import AccessGlobalService from './entities/app'
 // adapters
@@ -59,7 +60,8 @@ import metaController from './adapters/blog.in/meta.ctrl'
         OPENAI_API_KEY = await googleCloud.accessSecret('OPENAI_API_KEY')
     } catch {
         // 這段讀不到就算了
-        OPENAI_API_KEY = require("../OPEN_API_KEY.json");
+        const keyPath = path.resolve(__dirname, '../OPEN_API_KEY.json')
+        OPENAI_API_KEY = require(keyPath);
     }
     chatGpt.initializeSync(OPENAI_API_KEY)
     // Load firebase
@@ -67,7 +69,8 @@ import metaController from './adapters/blog.in/meta.ctrl'
     try {
         FIREBASE_SERVICE_ACCOUNT_KEY_JSON = await googleCloud.accessSecret('FIREBASE_SERVICE_ACCOUNT_KEY_JSON')
     } catch {
-        FIREBASE_SERVICE_ACCOUNT_KEY_JSON = require("../FIREBASE_SERVICE_ACCOUNT_KEY_JSON.json");
+        const keyPath = path.resolve(__dirname, '../FIREBASE_SERVICE_ACCOUNT_KEY_JSON.json')
+        FIREBASE_SERVICE_ACCOUNT_KEY_JSON = require(keyPath);
     }
     const firestore = await firebase.initializeSync(FIREBASE_SERVICE_ACCOUNT_KEY_JSON)
     /**
