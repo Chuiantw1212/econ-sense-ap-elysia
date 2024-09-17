@@ -83,8 +83,8 @@ import metaController from './adapters/blog.in/meta.ctrl'
     const planModel = new PlanModel(firestore)
 
     /**
-   * Services
-   */
+     * Services
+     */
     const allServices: ILocals = {
         GetNewStoryService: new GetNewStoryService(chatGpt),
         GetTranslationService: new GetTranslationService(chatGpt),
