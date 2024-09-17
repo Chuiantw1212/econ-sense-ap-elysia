@@ -14,7 +14,7 @@
     "dotenv": "^16.4.5",
     "elysia": "latest",
     "fast-xml-parser": "^4.5.0",
-    "firebase-admin": "^12.1.0",
+    "firebase-admin": "^12.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.10.0",
