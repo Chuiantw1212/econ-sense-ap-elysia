@@ -1,6 +1,7 @@
 const time = new Date().getTime()
 // Elysia cores
 import { Elysia } from "elysia";
+import { node } from '@elysiajs/node'
 import { cors } from '@elysiajs/cors'
 // entities
 import AccessGlobalService from './entities/app'
@@ -144,9 +145,11 @@ import metaController from './adapters/blog.in/meta.ctrl'
     /**
      * App Start
      */
-    app.listen(3000);
+    const port = 3000
+    app.listen(3000)
+    // app.use(node(port))
     console.log(
-        `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
+        `🦊 Elysia is running at localhost:${port}`
     );
     const timeEnd = new Date().getTime()
     const timeDiff = (timeEnd - time) / 1000

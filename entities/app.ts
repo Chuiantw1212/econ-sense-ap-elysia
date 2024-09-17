@@ -56,6 +56,13 @@ export interface IApp {
     locals: ILocals
 }
 
+export function extractLocals(request: Request): ILocals | any {
+    if ("locals" in request) {
+        const locals: ILocals = request.locals as ILocals
+        return locals
+    }
+}
+
 class AccessGlobalService {
     locals: ILocals = {} as any
     set(name: string, value: any) {
