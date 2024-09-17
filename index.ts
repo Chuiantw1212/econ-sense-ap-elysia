@@ -139,7 +139,7 @@ import metaController from './adapters/blog.in/meta.ctrl'
      * middlewares
      */
     app.use(cors({
-        origin: process.env.ORIGIN || 'http://localhost:5173',
+        origin: ['https://econ-sense.com/', 'http://localhost:5173'],
     }))
 
     /**
@@ -149,7 +149,7 @@ import metaController from './adapters/blog.in/meta.ctrl'
     app.listen(3000)
     // app.use(node(port))
     console.log(
-        `🦊 Elysia is running at localhost:${port}`
+        `🦊 Elysia is running at http://localhost:${port}`
     );
     const timeEnd = new Date().getTime()
     const timeDiff = (timeEnd - time) / 1000

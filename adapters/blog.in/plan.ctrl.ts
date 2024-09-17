@@ -28,11 +28,9 @@ router.onBeforeHandle(async ({ request }) => {
 router.put('/plan/profile', async function ({ request }) {
     try {
         const { PutProfileService } = AccessGlobalService.locals
-        const userPart = await request.body as any
-        if ("locals" in request) {
-            const locals: ILocals = request.locals as ILocals
-            await PutProfileService.mergeProfile(locals.user.uid, userPart)
-        }
+        const userPart = await request.json()
+        const locals = extractLocals(request)
+        await PutProfileService.mergeProfile(locals.user.uid, userPart)
     } catch (error: any) {
         return error.message || error
     }
