@@ -59,7 +59,7 @@ import metaController from './adapters/blog.in/meta.ctrl'
         OPENAI_API_KEY = await googleCloud.accessSecret('OPENAI_API_KEY')
     } catch {
         // 這段讀不到就算了
-        OPENAI_API_KEY = require("./OPEN_API_KEY.json");
+        OPENAI_API_KEY = require("../OPEN_API_KEY.json");
     }
     chatGpt.initializeSync(OPENAI_API_KEY)
     // Load firebase
@@ -67,7 +67,7 @@ import metaController from './adapters/blog.in/meta.ctrl'
     try {
         FIREBASE_SERVICE_ACCOUNT_KEY_JSON = await googleCloud.accessSecret('FIREBASE_SERVICE_ACCOUNT_KEY_JSON')
     } catch {
-        FIREBASE_SERVICE_ACCOUNT_KEY_JSON = require("./FIREBASE_SERVICE_ACCOUNT_KEY_JSON.json");
+        FIREBASE_SERVICE_ACCOUNT_KEY_JSON = require("../FIREBASE_SERVICE_ACCOUNT_KEY_JSON.json");
     }
     const firestore = await firebase.initializeSync(FIREBASE_SERVICE_ACCOUNT_KEY_JSON)
     /**
@@ -146,8 +146,8 @@ import metaController from './adapters/blog.in/meta.ctrl'
      * App Start
      */
     const port = 3000
-    // app.listen(port)
-    app.use(node(port))
+    app.listen(port)
+    // app.use(node(port))
     console.log(
         `🦊 Elysia is running at http://localhost:${port}`
     );
