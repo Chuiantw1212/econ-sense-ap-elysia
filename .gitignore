@@ -1,3 +1,10 @@
+# 會出人命的資料
+FIREBASE_SERVICE_ACCOUNT_KEY_JSON.json
+OPEN_API_KEY.json
+
+# 不知道啥東西
+.DS_Store
+
 # Logs
 logs
 *.log
@@ -85,7 +92,6 @@ web_modules/
 
 # Next.js build output
 .next
-out
 
 # Nuxt.js build / generate output
 .nuxt
