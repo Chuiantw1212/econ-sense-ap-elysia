@@ -18,13 +18,15 @@ export default class GetBackedInterestRateService implements GetBackedInterestRa
         if (options.length) {
             return Number(options[0].value)
         } else {
-            const interestRate = await this.adapter.crawBackedlInterestRate()
-            const newOption = {
-                label: 'interestRate',
-                value: interestRate
-            }
-            this.selectModel.replaceByKey('interestRate', [newOption])
-            return interestRate
+            return 2.375
+            // // 因為bun暫時不支援jsom所以要先註解掉
+            // const interestRate = await this.adapter.crawBackedlInterestRate()
+            // const newOption = {
+            //     label: 'interestRate',
+            //     value: interestRate
+            // }
+            // this.selectModel.replaceByKey('interestRate', [newOption])
+            // return interestRate
         }
     }
 }
