@@ -130,8 +130,8 @@ import metaController from './adapters/blog.in/meta.ctrl'
     })
 
     /**
-       * controllers
-       */
+     * controllers
+     */
     app.use(rootController)
     app.use(bankController)
     app.use(calculateController)
