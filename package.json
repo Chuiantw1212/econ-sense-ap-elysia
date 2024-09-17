@@ -3,8 +3,7 @@
   "version": "1.0.50",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "gcloud config configurations activate econ && nodemon index.ts",
-    "bun": "bun run --watch index.ts"
+    "dev": "gcloud config configurations activate econ && bun run --watch index.ts"
   },
   "dependencies": {
     "@elysiajs/cors": "^1.1.1",
