@@ -3,7 +3,7 @@
   "version": "1.0.50",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "gcloud config configurations activate econ && bun run --watch index.ts",
+    "dev": "gcloud config configurations activate econ && bun run --watch ./src/index.ts",
     "build": "docker build -t econ-sense-ap ."
   },
   "dependencies": {
