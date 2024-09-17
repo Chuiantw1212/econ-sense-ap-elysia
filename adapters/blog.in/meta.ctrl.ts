@@ -21,6 +21,7 @@ router.get('/meta/select', async function () {
         }
         return result
     } catch (error: any) {
+        console.trace(error)
         return error.message || error
     }
 })

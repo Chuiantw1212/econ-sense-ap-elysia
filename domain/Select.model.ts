@@ -5,15 +5,21 @@ export default class SelectModel {
     collection: CollectionReference = null as any
     constructor(firestore: Firestore) {
         this.collection = firestore.collection('selects')
-    } 
+    }
     async getOptionsByKey(key: string,): Promise<IOptionsItem[]> {
-        const keyQuery: Query = this.collection.where('key', '==', key).limit(1)
-        const snapshot: QuerySnapshot = await keyQuery.get()
-        if (snapshot.docs.length) {
-            const options: IOptionsItem[] = snapshot.docs[0].data().options
-            return options
-        } else {
-            return []
+        try {
+            const keyQuery: Query = this.collection.where('key', '==', key).limit(1)
+            const count = await keyQuery.count()
+            const snapshot: QuerySnapshot = await keyQuery.get()
+            if (snapshot.docs.length) {
+                const options: IOptionsItem[] = snapshot.docs[0].data().options
+                return options
+            } else {
+                return []
+            }
+        } catch (error: any) {
+            console.trace(error)
+            throw error.message || error
         }
     }
     async replaceByKey(key: string, options: IOptionsItem[] = []) {

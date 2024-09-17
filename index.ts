@@ -69,7 +69,6 @@ import metaController from './adapters/blog.in/meta.ctrl'
         FIREBASE_SERVICE_ACCOUNT_KEY_JSON = require("./FIREBASE_SERVICE_ACCOUNT_KEY_JSON.json");
     }
     const firestore = await firebase.initializeSync(FIREBASE_SERVICE_ACCOUNT_KEY_JSON)
-
     /**
      * models
      */
