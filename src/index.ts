@@ -150,8 +150,8 @@ import metaController from './adapters/blog.in/meta.ctrl'
      * App Start
      */
     const port = 3000
-    // app.listen(port)
-    app.use(node(port))
+    app.listen(port)
+    // app.use(node(port))
     console.log(
         `🦊 Elysia is running at http://localhost:${port}`
     );
