@@ -9,6 +9,8 @@ COPY bun.lockb bun.lockb
 RUN bun install
 
 COPY ./src ./src
+COPY ./src/FIREBASE_SERVICE_ACCOUNT_KEY_JSON.json ./src/FIREBASE_SERVICE_ACCOUNT_KEY_JSON.json
+COPY ./src/OPEN_API_KEY.json ./src/OPEN_API_KEY.json
 
 ENV NODE_ENV=production
 
