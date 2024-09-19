@@ -1,7 +1,6 @@
 const time = new Date().getTime()
 // Elysia cores
 import { Elysia } from "elysia";
-import { node } from '@elysiajs/node'
 import { cors } from '@elysiajs/cors'
 import path from 'path'
 // entities
@@ -74,6 +73,7 @@ import metaController from './adapters/blog.in/meta.ctrl'
         FIREBASE_SERVICE_ACCOUNT_KEY_JSON = require(keyPath);
     }
     const firestore = await firebase.initializeSync(FIREBASE_SERVICE_ACCOUNT_KEY_JSON)
+
     /**
      * models
      */
@@ -151,7 +151,6 @@ import metaController from './adapters/blog.in/meta.ctrl'
      */
     const port = 3000
     app.listen(port)
-    // app.use(node(port))
     console.log(
         `🦊 Elysia is running at http://localhost:${port}`
     );
