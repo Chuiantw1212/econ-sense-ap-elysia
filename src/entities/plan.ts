@@ -117,7 +117,7 @@ export interface IPlan {
     spouse?: IPlanSpouse,
     estatePrice?: IPlanEstatePrice,
     estateSize?: IPlanEstateSize,
-    estate?: IPlanMortgage,
+    mortgage?: IPlanMortgage,
     parenting?: IPlanParenting,
     security?: IPlanSecurity,
 }
@@ -204,7 +204,7 @@ class PlanEntity {
         parkingSpace: 0,
         floorSize: 0,
     }
-    estate = {
+    mortgage = {
         totalPrice: 0,
         totalPriceEstimated: 0,
         downpay: 0,
