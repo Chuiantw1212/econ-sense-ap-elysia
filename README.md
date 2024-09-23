@@ -27,3 +27,5 @@ Open <http://localhost:3000/> with your browser to see the result.
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
 
 ### Gcloud CLI
+
+#### gcloud auth application-default login
