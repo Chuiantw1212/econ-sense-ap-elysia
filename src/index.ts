@@ -1,6 +1,7 @@
 const time = new Date().getTime()
 // Elysia cores
 import { Elysia } from "elysia";
+import { node } from '@elysiajs/node'
 import { cors } from '@elysiajs/cors'
 import path from 'path'
 // entities
@@ -50,7 +51,7 @@ import planController from './adapters/blog.in/plan.ctrl'
 import metaController from './adapters/blog.in/meta.ctrl'
 
 (async () => {
-    const app = new Elysia()
+    const app = new Elysia({ adapter: node() })
     /**
      * Adapters
      */
