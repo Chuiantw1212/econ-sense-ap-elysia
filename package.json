@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@elysiajs/cors": "^1.1.1",
-    "@elysiajs/node": "0.0.0-alpha.0",
+    "@elysiajs/node": "^1.2.3",
     "@google-cloud/secret-manager": "^5.5.0",
     "chatgpt": "^5.2.5",
     "cors": "^2.8.5",
