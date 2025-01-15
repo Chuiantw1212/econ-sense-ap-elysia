@@ -25,6 +25,7 @@ import GetUserPlanService from "../domain/plan.service/GetUserPlan.js"
 import VerifyIdTokenService from "../domain/auth.service.js"
 
 export interface ILocals {
+    [key: string]: any
     startupTime?: number,
     GetNewStoryService: GetNewStoryService,
     GetTranslationService: GetTranslationService,
@@ -53,3 +54,21 @@ export interface ILocals {
 export interface IApp {
     locals: ILocals
 }
+
+export function extractLocals(request: Request): ILocals | any {
+    if ("locals" in request) {
+        const locals: ILocals = request.locals as ILocals
+        return locals
+    }
+}
+
+class AccessGlobalService {
+    locals: ILocals = {} as any
+    set(name: string, value: any) {
+        this.locals[name] = value
+    }
+    get(name: string) {
+        return this.locals[name]
+    }
+}
+export default new AccessGlobalService()
