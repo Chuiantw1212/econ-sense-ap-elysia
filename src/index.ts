@@ -131,7 +131,7 @@ import metaController from './adapters/blog.in/meta.ctrl'
      * middlewares
      */
     app.use(cors({
-        origin: ['https://econ-sense.com/', 'http://localhost:5173'],
+        origin: ['https://en-chu.com/', 'http://localhost:5173'],
     }))
 
     /**
