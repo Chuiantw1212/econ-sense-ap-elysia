@@ -28,9 +28,9 @@ router.onBeforeHandle(async ({ request }) => {
 router.put('/plan/profile', async function ({ request }) {
     try {
         const { PutProfileService } = AccessGlobalService.locals
-        const userPart = await request.json()
+        const planPart = await request.json()
         const locals = extractLocals(request)
-        await PutProfileService.mergeProfile(locals.user.uid, userPart)
+        await PutProfileService.mergeProfile(locals.user.uid, planPart)
     } catch (error: any) {
         return error.message || error
     }
@@ -39,9 +39,9 @@ router.put('/plan/profile', async function ({ request }) {
 router.put('/plan/career', async function ({ request }) {
     try {
         const { PutCareerService } = AccessGlobalService.locals
-        const userPart = await request.json()
+        const planPart = await request.json()
         const locals = extractLocals(request)
-        await PutCareerService.mergeCareer(locals.user.uid, userPart)
+        await PutCareerService.mergeCareer(locals.user.uid, planPart)
     } catch (error: any) {
         return error.message || error
     }
@@ -50,9 +50,9 @@ router.put('/plan/career', async function ({ request }) {
 router.put('/plan/retirement', async function ({ request }) {
     try {
         const { PutRetirementService } = AccessGlobalService.locals
-        const userPart = await request.json()
+        const planPart = await request.json()
         const locals = extractLocals(request)
-        await PutRetirementService.mergeRetirement(locals.user.uid, userPart)
+        await PutRetirementService.mergeRetirement(locals.user.uid, planPart)
     } catch (error: any) {
         return error.message || error
     }
@@ -61,9 +61,9 @@ router.put('/plan/retirement', async function ({ request }) {
 router.put('/plan/estatePrice', async function ({ request }) {
     try {
         const { PutEstatePriceService } = AccessGlobalService.locals
-        const userPart = await request.json()
+        const planPart = await request.json()
         const locals = extractLocals(request)
-        await PutEstatePriceService.mergeEstatePrice(locals.user.uid, userPart)
+        await PutEstatePriceService.mergeEstatePrice(locals.user.uid, planPart)
     } catch (error: any) {
         return error.message || error
     }
@@ -72,20 +72,20 @@ router.put('/plan/estatePrice', async function ({ request }) {
 router.put('/plan/estateSize', async function ({ request }) {
     try {
         const { PutEstateSizeService } = AccessGlobalService.locals
-        const userPart = await request.json()
+        const planPart = await request.json()
         const locals = extractLocals(request)
-        await PutEstateSizeService.mergeEstateSize(locals.user.uid, userPart)
+        await PutEstateSizeService.mergeEstateSize(locals.user.uid, planPart)
     } catch (error: any) {
         return error.message || error
     }
 })
 
-router.put('/plan/estate', async function ({ request }) {
+router.put('/plan/mortgage', async function ({ request }) {
     try {
         const { PutMortgageService } = AccessGlobalService.locals
-        const userPart = await request.json()
+        const planPart = await request.json()
         const locals = extractLocals(request)
-        await PutMortgageService.mergeMortgage(locals.user.uid, userPart)
+        await PutMortgageService.mergeMortgage(locals.user.uid, planPart)
     } catch (error: any) {
         return error.message || error
     }
@@ -94,9 +94,9 @@ router.put('/plan/estate', async function ({ request }) {
 router.put('/plan/spouse', async function ({ request }) {
     try {
         const { PutSpouseService } = AccessGlobalService.locals
-        const userPart = await request.json()
+        const planPart = await request.json()
         const locals = extractLocals(request)
-        await PutSpouseService.mergeSpouse(locals.user.uid, userPart)
+        await PutSpouseService.mergeSpouse(locals.user.uid, planPart)
     } catch (error: any) {
         return error.message || error
     }
@@ -105,9 +105,9 @@ router.put('/plan/spouse', async function ({ request }) {
 router.put('/plan/parenting', async function ({ request }) {
     try {
         const { PutParentingService } = AccessGlobalService.locals
-        const userPart = await request.json()
+        const planPart = await request.json()
         const locals = extractLocals(request)
-        await PutParentingService.mergeParenting(locals.user.uid, userPart)
+        await PutParentingService.mergeParenting(locals.user.uid, planPart)
     } catch (error: any) {
         return error.message || error
     }
@@ -116,9 +116,9 @@ router.put('/plan/parenting', async function ({ request }) {
 router.put('/plan/security', async function ({ request }) {
     try {
         const { PutSecurityService } = AccessGlobalService.locals
-        const userPart = await request.json()
+        const planPart = await request.json()
         const locals = extractLocals(request)
-        await PutSecurityService.mergeSecurity(locals.user.uid, userPart)
+        await PutSecurityService.mergeSecurity(locals.user.uid, planPart)
     } catch (error: any) {
         return error.message || error
     }
@@ -131,8 +131,8 @@ router.post('/plan/new', async function ({ request }) {
         const locals = extractLocals(request)
         const planForm: IPlan = await PostNewPlanService.addNewPlan(locals.user.uid, planEntity)
         const interestRate = await GetBackedInterestRateService.getBackedInterestRate()
-        if (planForm.estate) {
-            planForm.estate.interestRate = interestRate
+        if (planForm.mortgage) {
+            planForm.mortgage.interestRate = interestRate
         }
         return planForm
     } catch (error: any) {

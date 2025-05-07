@@ -49,8 +49,15 @@ export interface IPlanRetirement {
         // 公保
         requestType: string,
     },
-    qualityLevel: number,
-    percentileRank: number,
+    // 失能與照顧
+    monthlyLivingExpense: number,
+    disability: {
+        age: number,
+        monthlyLivingExpense: number,
+        monthlyCaringExpense: number,
+        housing: string,
+        carer: string,
+    }
 }
 
 export interface IPlanSecurity {
@@ -107,19 +114,22 @@ export interface IPlanMortgage {
     interestRate: number,
 }
 
-export interface IPlan {
-    [key: string]: any
-    uid: string,
-    id: string, // document id
+export interface IPlanData {
     profile?: IPlanProfile,
     career?: IPlanCareer,
     retirement?: IPlanRetirement,
     spouse?: IPlanSpouse,
     estatePrice?: IPlanEstatePrice,
     estateSize?: IPlanEstateSize,
-    estate?: IPlanMortgage,
     parenting?: IPlanParenting,
     security?: IPlanSecurity,
+    mortgage?: IPlanMortgage,
+}
+
+export interface IPlanDoc extends IPlanData {
+    [key: string]: any
+    uid: string,
+    id: string, // document id
 }
 
 class PlanEntity {
@@ -163,8 +173,14 @@ class PlanEntity {
             irrOverDecade: 0,
             requestType: '',
         },
-        qualityLevel: 0,
-        percentileRank: 0,
+        monthlyLivingExpense: 0,
+        disability: {
+            age: 0,
+            monthlyLivingExpense: 0,
+            monthlyCaringExpense: 0,
+            housing: "",
+            carer: "",
+        }
     }
     security = {
         allocationETF: "",
@@ -218,7 +234,7 @@ class PlanEntity {
 
 /** 型別檢查用 */
 export function getNewPlanEntity() {
-    const entity: IPlan = new PlanEntity()
+    const entity: IPlanDoc = new PlanEntity()
     return entity
 }
 
